@@ -1,0 +1,38 @@
+.feature {
+  &__grid {
+
+    
+    @include breakpoint-up(medium){
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__item {
+    border: 1px solid tomato;
+
+    padding: 0.9375rem;
+
+    @include breakpoint-up(medium){
+      flex: 1 0 50%; //means 1= grow 0= schrink 50%= 
+
+    }
+
+    @include breakpoint-up(large){
+        flex: 1; //order 
+    }
+            
+  }
+
+  &__icon {
+            
+  }
+
+  &__title {
+            
+  }
+
+  &__description {
+            
+  }
+}
