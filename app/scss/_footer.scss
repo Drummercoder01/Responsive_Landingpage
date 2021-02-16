@@ -4,54 +4,133 @@
     padding: 2.5rem;
     text-align: center;
 
+    .container {
+        @include breakpoint-up(large){
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 3fr; //3 first columns 1 fraction en 1 wiht 2fractions
+            grid-template-rows: 1fr auto; //each row same amount of space
+            grid-template-areas: 
+            "logo links1 links2 cta"//name for each column and first row
+            "social links1 links2 copyright";//name for each column and second row
+            gap: 1rem;
+            justify-items: start;
+        }
+
+    }
+
     a {
         color: $white;
     }
 
     &__logo {
-        margin-bottom: 1.875rem;
         display: inline-block;
+
+        @include breakpoint-down(medium){
+            margin-bottom: 1.875rem;
+        }
+
+        @include breakpoint-up(large){
+            grid-area: logo; //not necesary to be a string(a bit confusing...)
+        }
 
     }
 
     &__social {
-        
-        margin-bottom: 1.875rem;
+
+        @include breakpoint-down(medium){
+            margin-bottom: 1.875rem;
+        }
+
+        @include breakpoint-up(large){
+            grid-area: social; //not necesary to be a string(a bit confusing...)
+            align-self: end;
+        }
 
         a {
             display: inline-block;
+            height: 1.25rem;//20px
+
+            svg path {
+                transition: fill 150ms ease-in-out;
+            }
+
+            &:hover svg path {
+                fill: $limeGreen;
+
+            }
         }
 
         a:not(:last-child) {//last-child will not have margin right
             margin-right: 1rem;
         }
-
     }
 
     &__links {
 
         display: flex;
         flex-direction: column;
+        align-items: center;
+        font-size: 0.9375rem;
+
+        @include breakpoint-up(large){
+           justify-content: space-between;
+            align-items: start;
+           
+        }
+
         &.col1 {
+
+            @include breakpoint-up(large){
+                grid-area: links1; //not necesary to be a string(a bit confusing...)
+            }
 
         }
 
         &.col2 {
-            margin-bottom: 1.875rem;
+            @include breakpoint-down(medium){
+                margin-bottom: 1.875rem;
+            }
 
+            @include breakpoint-up(large){
+                grid-area: links2; //not necesary to be a string(a bit confusing...)
+            }
+        }
+
+        a {
+            line-height: 2.25;
+            transition: color 150ms ease-in-out;
+
+            &:hover {
+                color: $limeGreen;
+            }
         }
 
     }
 
     &__cta {
 
+        @include breakpoint-up(large){
+            grid-area: cta; //not necesary to be a string(a bit confusing...)
+            text-align: right;
+            justify-self: end;//can use this for each individual child
+        }
+
         a.button {
-            margin-bottom: 1.875rem;
+            @include breakpoint-down(medium){
+                margin-bottom: 1.875rem;
+            }
 
         }
     }
 
     &__copyright {
+        font-size: 0.8125rem;
+        color: $grayishBlue;
+        @include breakpoint-up(large){
+            grid-area: copyright; //not necesary to be a string(a bit confusing...)
+            align-self: end;
+            justify-self: end;
+        }
 
     }
     
